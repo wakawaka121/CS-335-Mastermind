@@ -1,16 +1,25 @@
 package model;
+
+import java.util.Random;
+
 /**
  * 
- * @author YOUR NAME HERE
+ * @author Derek Tominaga
  *
  */
 public class MastermindModel {
+	private final char[] colorPool = {'r','o','y','g','b','p'};
+	private char[] computerAnswer = new char[4];
+	
 	//private variable(s) to store the answer
 
 	// Only these methods may be public - you may not create any additional 
 	// public methods (and NO public fields)
     public MastermindModel() { 
-    	// TODO Make the answer  
+    	for(int index = 0; index < 4; index++) {
+    		Random colorSelect = new Random();
+    		computerAnswer[index] = colorPool[colorSelect.nextInt(6)];
+    	} 
     }
     
     /**
@@ -23,6 +32,10 @@ public class MastermindModel {
      * @param answer A string that represents the four color solution
      */
     public MastermindModel(String answer) {
+    	answer = answer.toLowerCase();
+    	for(int index = 0; index < answer.length();index++) {
+    		computerAnswer[index] = answer.charAt(index);
+    	}
     	// TODO Take answer and somehow store it as your answer. Make sure the getColorAt method 
     	// still works
     }
@@ -32,9 +45,8 @@ public class MastermindModel {
           /* Return color at position index as a char
            (first converted if stored as a number) */
     	
-    	return 'r'; //Just returning something to make sure the code compiles
+    	return computerAnswer[index]; //Just returning something to make sure the code compiles
     }
     
     // Create as many private methods as you like
-
 }

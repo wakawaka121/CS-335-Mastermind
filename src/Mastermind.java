@@ -1,6 +1,11 @@
+import java.util.Scanner;
+
+import controller.MastermindController;
+import model.MastermindModel;
+
 /**
  * 
- * @author YOUR NAME HERE
+ * @author Derek Tominaga
  *
  */
 public class Mastermind {
@@ -8,19 +13,39 @@ public class Mastermind {
 	public static void main(String[] args) {
 		// This class represents the view, it should be how uses play the game
 		System.out.println("Welcome to Mastermind!");
-		// TODO while the user wants to play:
-		
-		// TODO Construct the model (whose constructor builds the secret answer)
-		
-		// TODO Construct the controller, passing in the model
-		
-		// TODO Read up to ten user inputs
-		
-		// TODO Check whether or not the input is correct (by asking the controller)
-		
-		// TODO If not, display the relevant statistics  (by asking the controller)
-		
-		// TODO Determine win or loss
+		System.out.print("Would you like to play? ");
+		Scanner input = new Scanner(System.in);
+		String willPlay = input.next().toLowerCase();
+		System.out.println();
+		while(!willPlay.equals("no")) {
+			MastermindModel gameSolution = new MastermindModel();
+			MastermindController gameController = new MastermindController(gameSolution);
+			int attempt = 1;
+			while(attempt <=10) {
+				System.out.print("Enter guess number " + attempt + ": " );
+				String guess = input.next().toLowerCase();
+				if(gameController.isCorrect(guess)) {
+					System.out.println("Corect: your got it on attempt " + attempt);
+					attempt = 12;
+				}
+				else {
+					System.out.println("Colors in the correct place: " + gameController.getRightColorRightPlace(guess));
+					System.out.println("Colors correct but in wrong position: " + gameController.getRightColorWrongPlace(guess));
+					System.out.println();
+					attempt++;
+				}
+			}
+			if(attempt <=11) {
+				System.out.print("Nice try, but you have exceeded maxinum number of attempts. \nWould you like to play again?");
+			}
+			else {
+				System.out.print("Would you like to play again? ");
+			}
+			willPlay = input.next().toLowerCase();
+			
+		} 
+		System.out.println("Thank you for playing.");
+		input.close();
 	}
 
 }
