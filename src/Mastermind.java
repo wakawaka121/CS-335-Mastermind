@@ -11,7 +11,6 @@ import model.MastermindModel;
 public class Mastermind {
 
 	public static void main(String[] args) {
-		// This class represents the view, it should be how uses play the game
 		System.out.println("Welcome to Mastermind!");
 		System.out.print("Would you like to play? ");
 		Scanner input = new Scanner(System.in);

@@ -36,8 +36,6 @@ public class MastermindModel {
     	for(int index = 0; index < answer.length();index++) {
     		computerAnswer[index] = answer.charAt(index);
     	}
-    	// TODO Take answer and somehow store it as your answer. Make sure the getColorAt method 
-    	// still works
     }
 
 

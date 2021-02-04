@@ -66,6 +66,5 @@ public class MastermindController {
     	return rightColor; //Just something for now to make sure the code compiles
     }
 
-    // Create as many private methods as you like
 
 }
