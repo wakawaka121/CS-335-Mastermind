@@ -6,6 +6,11 @@ import model.MastermindModel;
 /**
  * 
  * @author Derek Tominaga
+ * Description: This class represents the view of the Mastermind game. It contains
+ * the logic in how mastermind is played. The game allows user to decide if 
+ * they will play, allows player to make 10 guesses, and lets user know if they found 
+ * the correct solution, or if they exceeded allowed attempts. Allows users to play 
+ * multiple times, until they decide not to.
  *
  */
 public class Mastermind {

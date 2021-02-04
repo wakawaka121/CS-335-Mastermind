@@ -5,16 +5,24 @@ import java.util.Random;
 /**
  * 
  * @author Derek Tominaga
+ * Description: This class contains methods to create and access a MastermindModel object.
+ * Constructors: array of 4 chars generated, randomly or by string input.
+ * Methods: 
+ * - getColorAt: returns char at a specific index.
+ *  
  *
  */
 public class MastermindModel {
 	private final char[] colorPool = {'r','o','y','g','b','p'};
 	private char[] computerAnswer = new char[4];
 	
-	//private variable(s) to store the answer
-
-	// Only these methods may be public - you may not create any additional 
-	// public methods (and NO public fields)
+	/*
+	 * This function is the zero argument constructor. 
+	 * when called this constructor generates a random computerAnswer
+	 * by choosing 4 of the 6 possible colors.
+	 * computerAnswer: char array of size 4, that represents the order of the 
+	 * generated solution to be solved for.
+	 * */
     public MastermindModel() { 
     	for(int index = 0; index < 4; index++) {
     		Random colorSelect = new Random();
@@ -38,7 +46,11 @@ public class MastermindModel {
     	}
     }
 
-
+    /*
+     * This method takes one parameter to determine the char
+     * at a specific int value.
+     * return: char at given index of computerAnswer. 
+     * */
     public char getColorAt(int index) {
           /* Return color at position index as a char
            (first converted if stored as a number) */
@@ -46,5 +58,4 @@ public class MastermindModel {
     	return computerAnswer[index]; //Just returning something to make sure the code compiles
     }
     
-    // Create as many private methods as you like
 }
