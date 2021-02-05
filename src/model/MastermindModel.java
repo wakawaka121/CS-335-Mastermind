@@ -13,8 +13,9 @@ import java.util.Random;
  *
  */
 public class MastermindModel {
+	private final int MODEL_SIZE = 4;
 	private final char[] colorPool = {'r','o','y','g','b','p'};
-	private char[] computerAnswer = new char[4];
+	private char[] computerAnswer = new char[MODEL_SIZE];
 	
 	/*
 	 * This function is the zero argument constructor. 
@@ -24,7 +25,7 @@ public class MastermindModel {
 	 * generated solution to be solved for.
 	 * */
     public MastermindModel() { 
-    	for(int index = 0; index < 4; index++) {
+    	for(int index = 0; index < MODEL_SIZE; index++) {
     		Random colorSelect = new Random();
     		computerAnswer[index] = colorPool[colorSelect.nextInt(6)];
     	} 
@@ -40,9 +41,14 @@ public class MastermindModel {
      * @param answer A string that represents the four color solution
      */
     public MastermindModel(String answer) {
-    	answer = answer.toLowerCase();
-    	for(int index = 0; index < answer.length();index++) {
-    		computerAnswer[index] = answer.charAt(index);
+    	if(answer.length() != MODEL_SIZE) {
+    		throw new IllegalArgumentException("Invalid string input. String must be of length 4.");
+    	}
+    	else {
+    		answer = answer.toLowerCase();
+    		for(int index = 0; index < answer.length();index++) {
+    			computerAnswer[index] = answer.charAt(index);
+    		}
     	}
     }
 

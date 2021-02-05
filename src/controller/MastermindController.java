@@ -20,7 +20,8 @@ import model.MastermindModel;
  *
  */
 public class MastermindController {
-	private char[] solution = new char[4];
+	private final int MODEL_SIZE = 4;
+	private char[] solution = new char[MODEL_SIZE];
 	
 	/*This constructor takes one parameter, model, to create a 
 	 *MastermindController object and set the one private
@@ -30,7 +31,7 @@ public class MastermindController {
 	 *solution that is being guessed.
 	 **/
 	public MastermindController(MastermindModel model) {
-		for(int index = 0; index < 4; index++) {
+		for(int index = 0; index < MODEL_SIZE; index++) {
 			solution[index] = model.getColorAt(index);
 		}
 	}

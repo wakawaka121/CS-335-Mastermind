@@ -14,6 +14,7 @@ import model.MastermindModel;
  *
  */
 public class Mastermind {
+	private static final int GUESS_LENGTH = 4;
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Mastermind!");
@@ -21,6 +22,12 @@ public class Mastermind {
 		Scanner input = new Scanner(System.in);
 		String willPlay = input.next().toLowerCase();
 		System.out.println();
+		if(!isValidChoice(willPlay)) {
+			while(!isValidChoice(willPlay)){
+				System.out.print("Please input either 'yes' or 'no'. \n");
+				willPlay = input.next().toLowerCase();
+			}
+		}
 		while(!willPlay.equals("no")) {
 			MastermindModel gameSolution = new MastermindModel();
 			MastermindController gameController = new MastermindController(gameSolution);
@@ -28,6 +35,12 @@ public class Mastermind {
 			while(attempt <=10) {
 				System.out.print("Enter guess number " + attempt + ": " );
 				String guess = input.next().toLowerCase();
+				if(!isValidGuess(guess)) {
+					while(!isValidGuess(guess)) {
+						System.out.print("Guess must be of length 4. Please re-enter your guess.");
+						guess = input.next().toLowerCase();
+					}
+				}
 				if(gameController.isCorrect(guess)) {
 					System.out.println("Corect: your got it on attempt " + attempt);
 					attempt = 12;
@@ -48,8 +61,30 @@ public class Mastermind {
 			willPlay = input.next().toLowerCase();
 			
 		} 
-		System.out.println("Thank you for playing.");
+		System.out.println("Thank you for playing. ");
 		input.close();
+	}
+	
+	/*This method validates user choice to if they will play the game by checking
+	 * user input and ensuring the input is either yes or no.
+	 * return: true if input is yes or no. */
+	private static boolean isValidChoice(String userChoice) {
+		userChoice = userChoice.toLowerCase();
+		if(userChoice.equals(("yes")) || userChoice.equals("no")) {
+			return true;
+		}
+		return false;
+	}
+	
+	/*This method validate user guess, to ensure that it is of length 
+	 * GUESS_LENGTH.
+	 * return: true if input string is of length GUESS_LENGTH*/
+	private static boolean isValidGuess(String userInput) {
+		userInput = userInput.toLowerCase();
+		if(userInput.length() != GUESS_LENGTH) {
+			return false;
+		}
+		return true;
 	}
 
 }
